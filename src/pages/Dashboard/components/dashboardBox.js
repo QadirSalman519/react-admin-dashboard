@@ -8,21 +8,20 @@ import MenuItem from '@mui/material/MenuItem';
 import { IoTimerOutline } from "react-icons/io5";
 import { useState } from "react";
 
-
 const DashboardBox = (props)=>{
-      const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
 
-const ITEM_HEIGHT = 48;
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const ITEM_HEIGHT = 48;
 
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return(
         <Button className="dashboardBox" style={{ 
@@ -62,32 +61,43 @@ const ITEM_HEIGHT = 48;
             <div className="ml-auto">
                 <Button className="ml-auto toggleIcon" onClick={handleClick}><HiDotsVertical/></Button>
 
-<Menu
-        id="long-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        slotProps={{
-          paper: {
-            style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
-              width: '20ch',
-            },
-          },
-          list: {
-            'aria-labelledby': 'long-button',
-          },
-        }}
-      >
-          <MenuItem onClick={handleClose}>
-            Last Day
-          </MenuItem>
-      </Menu>
+                <Menu
+                    className="dropdown_menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    slotProps={{
+                    paper: {
+                        style: {
+                        maxHeight: ITEM_HEIGHT * 4.5,
+                        width: '20ch',
+                        },
+                    },
+                    list: {
+                        'aria-labelledby': 'long-button',
+                    },
+                    }}
+                    >
+                    <MenuItem onClick={handleClose}>
+                        <IoTimerOutline/> Last Day
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <IoTimerOutline/> Last Day
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <IoTimerOutline/> Last Day
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <IoTimerOutline/> Last Day
+                    </MenuItem>
+                </Menu>
 
             </div>
 
         </div>
 
+        <h3 className="text-white font-weight-bold">$3,787,681.00</h3>
+        <p>$3,578.90 in last month</p>
 
         </Button>
     )
