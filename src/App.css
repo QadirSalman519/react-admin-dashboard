@@ -608,6 +608,10 @@ h1,h2,h3,h4,h5,h6,p{
   color: #403e57;
 }
 
+.table-responsive::-webkit-scrollbar-thumb{
+  background: #ccc !important;
+}
+
 .table .thead-dark th{
   background-color: #1866ee;
   border-color: rgba(255, 255, 255, 0.1);
@@ -694,4 +698,10 @@ table.v-align td .productBox{
 
 .css-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
     background-color: #0858f7 !important;
+}
+
+.tableFooter p{
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0px;
 }
