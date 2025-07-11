@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.webp";
+import logo from "../../assets/images/logo.webp";
 import Button from '@mui/material/Button';
 import { MdMenuOpen } from "react-icons/md";
 import { MdOutlineMenu } from "react-icons/md";
@@ -12,7 +12,6 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa6";
 import { IoShieldHalf } from "react-icons/io5";
 
-
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -23,8 +22,8 @@ import { MyContext } from "../../App";
 
 const Header = ()=>{
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [isOpenNotificationDrop, setisOpenNotificationDrop] = React.useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [isOpenNotificationDrop, setisOpenNotificationDrop] = useState(false);
     const openMyAcc = Boolean(anchorEl);
     const openNotification = Boolean(isOpenNotificationDrop);
 
@@ -316,49 +315,53 @@ const Header = ()=>{
                             </Menu>
                         </div>
 
-                        <div className="myAccWrapper">
+                        {
+                            context.isLogin!==true ? <Link to={'/login'}><Button className="btn-blue btn-lg btn-round">Sign In</Button></Link>
+                            :
+                            <div className="myAccWrapper">
+                            
+                                <button className="myAcc d-flex align-items-center" onClick={handleOpenMyAccDrop}>
+                                    <div className="userImg">
+                                        <span className="rounded-circle">
+                                            <img src="https://mironcoder-hotash.netlify.app/images/avatar/01.webp"/>
+                                        </span>
+                                    </div>
 
-                            <button className="myAcc d-flex align-items-center" onClick={handleOpenMyAccDrop}>
-                                <div className="userImg">
-                                    <span className="rounded-circle">
-                                        <img src="https://mironcoder-hotash.netlify.app/images/avatar/01.webp"/>
-                                    </span>
-                                </div>
+                                    <div className="userInfo">
+                                        <h4>Rinku Verma</h4>
+                                        <p className="mb-0">@rinku37</p>
+                                    </div>
+                                </button>
 
-                                <div className="userInfo">
-                                    <h4>Rinku Verma</h4>
-                                    <p className="mb-0">@rinku37</p>
-                                </div>
-                            </button>
+                                <Menu
+                                    anchorEl={anchorEl}
+                                    id="account-menu"
+                                    open={openMyAcc}
+                                    onClose={handleCloseMyAccDrop}
+                                    onClick={handleCloseMyAccDrop}
+                                >
+                                    <MenuItem onClick={handleCloseMyAccDrop}>
+                                    <ListItemIcon>
+                                        <PersonAdd/>
+                                    </ListItemIcon>
+                                    My Account
+                                    </MenuItem>
+                                    <MenuItem onClick={handleCloseMyAccDrop}>
+                                    <ListItemIcon>
+                                        <IoShieldHalf/>
+                                    </ListItemIcon>
+                                    Reset Password
+                                    </MenuItem>
+                                    <MenuItem onClick={handleCloseMyAccDrop}>
+                                    <ListItemIcon>
+                                        <Logout/>
+                                    </ListItemIcon>
+                                    Logout
+                                    </MenuItem>
+                                </Menu>
 
-                            <Menu
-                                anchorEl={anchorEl}
-                                id="account-menu"
-                                open={openMyAcc}
-                                onClose={handleCloseMyAccDrop}
-                                onClick={handleCloseMyAccDrop}
-                            >
-                                <MenuItem onClick={handleCloseMyAccDrop}>
-                                <ListItemIcon>
-                                    <PersonAdd/>
-                                </ListItemIcon>
-                                My Account
-                                </MenuItem>
-                                <MenuItem onClick={handleCloseMyAccDrop}>
-                                <ListItemIcon>
-                                    <IoShieldHalf/>
-                                </ListItemIcon>
-                                Reset Password
-                                </MenuItem>
-                                <MenuItem onClick={handleCloseMyAccDrop}>
-                                <ListItemIcon>
-                                    <Logout/>
-                                </ListItemIcon>
-                                Logout
-                                </MenuItem>
-                            </Menu>
-
-                        </div>
+                            </div>
+                        }
 
                     </div>
 
