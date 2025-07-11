@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.webp";
 import Button from '@mui/material/Button';
@@ -19,6 +19,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Logout from '@mui/icons-material/Logout';
 import Divider from "@mui/material/Divider";
+import { MyContext } from "../../App";
 
 const Header = ()=>{
 
@@ -26,6 +27,8 @@ const Header = ()=>{
     const [isOpenNotificationDrop, setisOpenNotificationDrop] = React.useState(false);
     const openMyAcc = Boolean(anchorEl);
     const openNotification = Boolean(isOpenNotificationDrop);
+
+    const context = useContext(MyContext)
 
     const handleOpenMyAccDrop = (event) => {
         setAnchorEl(event.currentTarget);
@@ -56,8 +59,10 @@ const Header = ()=>{
                     </div>
 
                     <div className="col-sm-3 d-flex align-items-center part2 pl-4">
-                        <button className="rounded-circle mr-3"> 
-                            <MdMenuOpen />
+                        <button className="rounded-circle mr-3" onClick={()=>context.setIsToggleSidbar(!context.isToggleSidebar)}> 
+                            {
+                                context.isToggleSidebar===false ? <MdMenuOpen /> : <MdOutlineMenu/>
+                            }
                         </button>
                         <SearchBox/>
                     </div>

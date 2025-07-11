@@ -7,14 +7,17 @@ import { FaBell } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+import { MyContext } from "../../App";
 
 
 const Sidebar = ()=>{
 
     const [activeTab, setActiveTab] = useState(0);
     const [isToggleSubMenu, setIsToggleSubMenu] = useState(false);
+
+    const context = useContext(MyContext)
 
     const isOpenSubMenu=(index)=>{
         setActiveTab(index)
