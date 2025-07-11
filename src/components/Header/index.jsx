@@ -58,7 +58,7 @@ const Header = ()=>{
                         </Link>
                     </div>
 
-                    <div className="col-sm-3 d-flex align-items-center part2 pl-4">
+                    <div className="col-sm-3 d-flex align-items-center part2">
                         <button className="rounded-circle mr-3" onClick={()=>context.setIsToggleSidbar(!context.isToggleSidebar)}> 
                             {
                                 context.isToggleSidebar===false ? <MdMenuOpen /> : <MdOutlineMenu/>
